@@ -10,27 +10,28 @@ class Play extends Phaser.Scene {
     create() {
         // define keys
         keyJUMP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-        keyRESET = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
 
 
-        // Starting // I don't understand exactly why thses scales and positions do but they do.
-        this.treeAbove = this.add.image(-(600)/13,((900*4)+660)*2,'tree').setOrigin(0).setScale(4) // Above
         
-        this.treeMiddle = this.add.image(-(600)/13,-(900*4)+660,'tree').setOrigin(0).setScale(4) // middle
-        this.treeRight = this.add.image((600)/13,(900*4)-660,'tree').setOrigin(0).setScale(4) // right
-        this.treeLeft = this.add.image(-3*(600)/13,(900*4)-660,'tree').setOrigin(0).setScale(4) // left
+        this.tree = this.add.tileSprite(0, 0, 180 ,960, 'tree').setOrigin(0,0)
+        this.tree.setScale(4)
+
+        platforms = this.platforms = this.add.group()
+        this.speedX = 0
+        this.speedY = 0
 
 
+        // https://github.com/phaserjs/examples/blob/master/public/src/physics/arcade/asteroids%20movement.js
 
-
-        this.bear = new Bear(this, 0, 0 , 'bear', 0 )
-
+        player = this.bear = new Bear(this, width/2, height -100 , 'bear', 0 )
+        this.bear.body.setDamping(true)
+        this.bear.body.setDrag(.05, 0) 
+        this.bear.setScale(3)
         
-        this.cameras.main.startFollow(this.bear)
-
-
+        
 
         let scoreConfig = {
             fontFamily: 'Courier',
@@ -68,15 +69,32 @@ class Play extends Phaser.Scene {
 
     }
 
+    
     update(){
         if(keyLEFT.isDown) {
-            this.bear.body.setVelocityX(-50)
-            this.bear.resetFlip()
-        } else if(keyRIGHT.isDown) {
-            this.bear.body.setVelocityX(50)
+
+            this.bear.setFlip(false, false)
+        } 
+        if(keyRIGHT.isDown) {
             this.bear.setFlip(true, false)
-        } else {
-            this.bear.body.setVelocityX(0)
+        } 
+        
+        if(keyJUMP.isDown && this.bear.checkCollision) {
+            verticalMovement =2
+        }  else if (this.bear.checkCollision){
+            verticalMovement = 0
         }
+        if ( this.bear.y < height/3) {
+            this.tree.tilePositionY -= .5
+            this.platforms.x += 3
+        }
+        
+        this.bear.update()
     }
+
+    generatePlatform(){
+        let newPlat = 
+    }
+
+
 }

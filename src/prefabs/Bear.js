@@ -7,13 +7,10 @@ class Bear extends Phaser.GameObjects.Sprite{
         scene.add.existing(this)           // add bear to existing scene
         scene.physics.add.existing(this)   // add physics body to scene
 
-        this.body.setSize(this.width / 2, this.height / 2)
+        this.body.setSize(this.width, this.height)
         this.body.setCollideWorldBounds(false)
 
         // set custom bear properties
-        this.bearVelocity = 100    // in pixels
-        this.hurtTimer = 250       // in ms
-
 
     }
 
@@ -21,7 +18,19 @@ class Bear extends Phaser.GameObjects.Sprite{
 
 
     update() {
-        
+        // Horizontal Wrap around
+        // if (this.x > width) {
+        //     this.x = 0
+        // }
+        // if (this.x <0){
+        //     this.x = width
+        // }
+
+        if(keyJUMP.isDown && collide(this)) {
+            this.body.setVelocity(0,-250)
+        } 
+
+
     }
 
     reset() {

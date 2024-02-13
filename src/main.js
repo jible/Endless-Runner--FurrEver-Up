@@ -12,15 +12,20 @@ const config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: true
+            debug: false
         }
     },
     scene: [ Load, MainMenu, Play ]
 }
 
 const game = new Phaser.Game(config)
-let keyJUMP, keyRESET, keyLEFT, keyRIGHT, click
-
+let keyJUMP, keyDOWN, keyLEFT, keyRIGHT, click
+let width = 600
+let height = 900
+let verticalMovement, horizontalMovement
 // set UI sizes
 let highScore = 0
 let screenWidth =0
+let player
+let platforms
+let topPlatform
