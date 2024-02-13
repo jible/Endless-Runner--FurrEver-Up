@@ -29,3 +29,4 @@ let screenWidth =0
 let player
 let platforms
 let topPlatform
+let platformCount

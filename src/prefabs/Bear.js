@@ -11,7 +11,7 @@ class Bear extends Phaser.GameObjects.Sprite{
         this.body.setCollideWorldBounds(false)
 
         // set custom bear properties
-
+        this.body.setGravity(20)
     }
 
     

@@ -26,12 +26,27 @@ class Play extends Phaser.Scene {
 
         // https://github.com/phaserjs/examples/blob/master/public/src/physics/arcade/asteroids%20movement.js
 
-        player = this.bear = new Bear(this, width/2, height -100 , 'bear', 0 )
-        this.bear.body.setDamping(true)
-        this.bear.body.setDrag(.05, 0) 
-        this.bear.setScale(3)
+        player = new Bear(this, width/2, height -100 , 'bear', 0 )
+        
+
+        
+      
         
         
+        let first = topPlatform = new Branch ( this, width/2, height - 95, 'branch', 0)
+        
+        topPlatform.body.setDamping(true)
+        topPlatform.body.setDrag(.05, 0) 
+        topPlatform.setScale(3)
+        topPlatform.body.setImmovable(true)
+        // https://phaser.discourse.group/t/one-way-and-pass-thru-platforms-in-phaser-3/11641/3
+        topPlatform.body.checkCollision.down = false;
+        topPlatform.body.checkCollision.up = true;
+        topPlatform.body.checkCollision.left = false
+        topPlatform.body.checkCollision.right = false
+        this.platforms.add(first)
+        platformCount =1 
+        topPlatform = first
 
         let scoreConfig = {
             fontFamily: 'Courier',
@@ -71,6 +86,10 @@ class Play extends Phaser.Scene {
 
     
     update(){
+        if ( platformCount < 20) {
+            generatePlatform()
+        }
+        
         if(keyLEFT.isDown) {
 
             this.bear.setFlip(false, false)
@@ -92,9 +111,25 @@ class Play extends Phaser.Scene {
         this.bear.update()
     }
 
+    
     generatePlatform(){
-        let newPlat = 
-    }
+        // https://rexrainbow.github.io/phaser3-rex-notes/docs/site/random/
+        let newPlat = new Branch ( this,  Phaser.Math.FloatBetween(1, width-1), topPlatform.y - (Phaser.Math.FloatBetween(10, 80)), 'branch', 0)
+        this.platforms.add(newPlat)
 
+        newPlat.setImmovable(true)
+        // https://phaser.discourse.group/t/one-way-and-pass-thru-platforms-in-phaser-3/11641/3
+        newPlat.checkCollision.down = false;
+        newPlat.checkCollision.up = true;
+        newPlat.checkCollision.left = false
+        newPlat.checkCollision.right = false
+        newPlat.setDamping(true)
+        newPlat.setDrag(.05)
+
+
+
+        topPlatform = newPlat
+        platformCount++
+    }
 
 }
