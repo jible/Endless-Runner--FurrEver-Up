@@ -30,7 +30,7 @@ class Credits extends Phaser.Scene {
         }
 
 
-        let sourecsConfig = {
+        let sourcesConfig = {
             fontFamily: 'Courier',
             fontSize: '15px',
             backgroundColor: '#F3B141',
@@ -47,7 +47,8 @@ class Credits extends Phaser.Scene {
         this.add.text(width/2, height/2 - 50, 'All visual assets made on piskel', menuConfig).setOrigin(0.5)
         this.add.text(width/2, height/2, 'All audio assets made on JSFXR', menuConfig).setOrigin(0.5)
         this.add.text(width/2, height/2 + 50, 'Most code was made from Rocket Patrol Assignment', menuConfig).setOrigin(0.5)
-        this.add.text(width/2, height/2 + 100, 'Creator: James Milestone', menuConfig).setOrigin(0.5)
+        this.add.text(width/2, height/2 + 100, 'Music found at https://www.chosic.com/download-audio/27248/', sourcesConfig).setOrigin(0.5)
+        this.add.text(width/2, height/2 + 150, 'Creator: James Milestone', menuConfig).setOrigin(0.5)
         this.add.text(width/2, height -50, 'Press C to return to menu', menuConfig).setOrigin(0.5)
         
        

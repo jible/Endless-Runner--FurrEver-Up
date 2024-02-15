@@ -6,10 +6,16 @@ class Play extends Phaser.Scene {
     preload() {
         this.load.audio('sfx-death', './assets/explosion.wav')
         this.load.audio('sfx-jump', './assets/jump.wav')
+        this.load.audio('music', './assets/music.mp3')
     }
     create() {
         // define keys
         
+        this.music = this.sound.add('music', {
+            loop:true
+        
+        });
+        this.music.play()
         walking = false
         keyJUMP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
@@ -190,7 +196,7 @@ class Play extends Phaser.Scene {
                 this.scene.start('menuScene')
             }
             if(keyRESET.isDown){
-                
+                this.music.pause()
                 this.scene.start('playScene')
             }
         }

@@ -4,6 +4,7 @@ class Load extends Phaser.Scene {
     }
 
     preload() {
+        // https://newdocs.phaser.io/docs/3.60.0/Phaser.Sound.Events.LOOP
         
         this.load.image('tree', './assets/TreeBackgroundSprite.png')
         this.load.spritesheet('bear', './assets/bearSprites.png', {
