@@ -6,7 +6,7 @@ class Load extends Phaser.Scene {
     preload() {
         
         this.load.image('tree', './assets/TreeBackgroundSprite.png')
-        this.load.spritesheet('bear', './assets/BearSprites.png', {
+        this.load.spritesheet('bear', './assets/bearSprites.png', {
             frameWidth:15,
             frameHeight: 40
         })
