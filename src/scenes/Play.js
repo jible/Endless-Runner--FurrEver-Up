@@ -10,7 +10,7 @@ class Play extends Phaser.Scene {
     create() {
         // define keys
         
-
+        walking = false
         keyJUMP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
@@ -127,7 +127,7 @@ class Play extends Phaser.Scene {
     
     update(){
 
-        if( ((keyJUMP.isDown && player.body.velocity.y == 0 ) || (keyJUMP.isDown && keyRESET.isDown))  && this.gameOver == false) {
+        if( ((keyJUMP.isDown && player.body.velocity.y == 0 ) || (keyJUMP.isDown && keyRESET.isDown))  && this.gameOver == false && !keyRESET.isDown) {
             
             this.sound.play('sfx-jump')
         }
@@ -204,7 +204,7 @@ class Play extends Phaser.Scene {
             minDistance = 99
         }
         //score( height) should determine minimum distance between plaforms far apart platforms are 
-        let newPlat = new Branch ( this,  Phaser.Math.FloatBetween(10, width-10), topPlatform.y - (Phaser.Math.FloatBetween(minDistance, 100)),'branch', 0)
+        let newPlat = new Branch ( this,  Phaser.Math.FloatBetween(30, width-30), topPlatform.y - (Phaser.Math.FloatBetween(minDistance, 100)),'branch', 0)
         this.platforms.add(newPlat)
         topPlatform = newPlat
         platformCount ++

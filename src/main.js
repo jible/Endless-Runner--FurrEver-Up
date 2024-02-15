@@ -29,6 +29,6 @@ let screenWidth =0
 let player
 let platforms
 let topPlatform, start
-let platformCount
+let platformCount, walking
 let maxJumpHeight = 100
 let grounded = false;

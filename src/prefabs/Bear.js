@@ -42,23 +42,25 @@ class Bear extends Phaser.GameObjects.Sprite{
             this.body.setVelocityY(-680 - (score/100))
             start = true
         } 
+
+        
+
         if(keyLEFT.isDown) {
             this.body.setVelocityX(-250)
-            this.setFlip(false, false)
+            this.setFlip(true, false)
         } 
         if(keyRIGHT.isDown) {
             this.body.setVelocityX(250,)
-            this.setFlip(true, false)
+            this.setFlip(false, false)
         } 
 
-        // this.anims.play(`swing-${hero.direction}`)
-        // hero.once('animationcomplete', () => {
-        //     this.stateMachine.transition('idle')
-        // })
-
+        if ( this.body.velocity.x != 0  && !walking){
+            this.anims.play(`walk`)
+            walking = true
+        } else if (this.body.velocity.x == 0  && walking){
+            this.anims.play('chill')
+            walking = false
+        }
     }
 
-    reset() {
-        
-    }
 }

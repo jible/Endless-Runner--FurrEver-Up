@@ -6,7 +6,11 @@ class Load extends Phaser.Scene {
     preload() {
         
         this.load.image('tree', './assets/TreeBackgroundSprite.png')
-        this.load.image('bear', './assets/BearSprites.png')
+        this.load.spritesheet('bear', './assets/BearSprites.png', {
+            frameWidth:15,
+            frameHeight: 40
+        })
+
         this.load.image('branch', './assets/branch.png')
     }
 
@@ -15,9 +19,15 @@ class Load extends Phaser.Scene {
 
         this.anims.create({
             key: 'walk',
-            frameRate: 8,
+            frameRate: 2,
             repeat: -1,
-            frames: this.anims.generateFrameNumbers('bear', { start: 2, end: 3 }),
+            frames: this.anims.generateFrameNumbers('bear', { frames: [1,2] }),
+        })
+        this.anims.create({
+            key: 'chill',
+            frameRate: 2,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('bear', { frames: [6,7] }),
         })
 
         this.scene.start('menuScene')
