@@ -11,7 +11,7 @@ class Bear extends Phaser.GameObjects.Sprite{
         this.body.setDrag(.01, 0 ) 
         this.body.setSize(this.width, this.height)
         this.body.setCollideWorldBounds(false)
-        this.body.setGravity(0,900)
+        this.body.setGravity(0,1500)
 
 
 
@@ -38,15 +38,15 @@ class Bear extends Phaser.GameObjects.Sprite{
         if( ((keyJUMP.isDown && this.body.velocity.y == 0 ) || (keyJUMP.isDown && keyRESET.isDown))  && gameOver == false) {
             
             //this.sound.play('sfx-jump')
-            this.body.setVelocityY(-500 - (score/100))
+            this.body.setVelocityY(-680 - (score/100))
             start = true
         } 
         if(keyLEFT.isDown) {
-            this.body.setVelocityX(-400)
+            this.body.setVelocityX(-250)
             this.setFlip(false, false)
         } 
         if(keyRIGHT.isDown) {
-            this.body.setVelocityX(400,)
+            this.body.setVelocityX(250,)
             this.setFlip(true, false)
         } 
 

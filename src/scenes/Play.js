@@ -82,8 +82,7 @@ class Play extends Phaser.Scene {
             top: 5,
             bottom: 5,
             },
-            align: 'middle',
-            fixedWidth: 500
+            align: 'middle'
         }
 
         this.score = 0
