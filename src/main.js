@@ -1,6 +1,7 @@
 // Code Practice: Scrolling States
 // Name: James Milestone
 // Date: 2/5/24
+// This took me about ~15 hours to complete
 
 'use strict'
 
