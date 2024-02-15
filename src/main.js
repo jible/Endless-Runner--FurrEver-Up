@@ -15,11 +15,11 @@ const config = {
             debug: false
         }
     },
-    scene: [ Load, MainMenu, Play ]
+    scene: [ Load, MainMenu, Credits, Play ]
 }
 
 const game = new Phaser.Game(config)
-let keyJUMP, keyDOWN, keyLEFT, keyRIGHT, click
+let keyJUMP, keyDOWN, keyLEFT, keyRIGHT, keyCREDITS, keyRESET
 let width = 600
 let height = 900
 let verticalMovement, horizontalMovement
@@ -28,5 +28,7 @@ let highScore = 0
 let screenWidth =0
 let player
 let platforms
-let topPlatform
+let topPlatform, start
 let platformCount
+let maxJumpHeight = 100
+let grounded = false;
