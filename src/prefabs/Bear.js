@@ -28,6 +28,7 @@ class Bear extends Phaser.GameObjects.Sprite{
 
     update(score, gameOver, ) {
         //Horizontal Wrap around
+
         if (this.x > width) {
             this.x = 0
         }
@@ -49,6 +50,11 @@ class Bear extends Phaser.GameObjects.Sprite{
             this.body.setVelocityX(250,)
             this.setFlip(true, false)
         } 
+
+        // this.anims.play(`swing-${hero.direction}`)
+        // hero.once('animationcomplete', () => {
+        //     this.stateMachine.transition('idle')
+        // })
 
     }
 
